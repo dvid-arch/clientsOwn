@@ -97,14 +97,16 @@
         const accno = form.accno.value;
         const accname = form.accname.value;
 
-        console.log(phone);
+        
         try {
           const res = await fetch("/adminup", {
             method: "POST",
             body: JSON.stringify({ phone,walink,bank,accno,accname }),
             headers: { "Content-Type": "application/json" },
           });
+
           alert('successful')
+          location.reload()
 
         } catch (error) {
             alert('error occurred, please refresh and try again')
