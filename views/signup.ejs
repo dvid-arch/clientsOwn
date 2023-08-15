@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="Buy data bundle at the cheapest rate, you can also refer friends and earn cash.">
+
+		<link rel="icon" href="/site_icon.jpg">
+		
+	
+		<meta property="og:image" content="http://alt-datas.herokuapp.com/data_price.jpg">
+		<meta property="og:image:height" content="312">
+		<meta property="og:image:width" content="600">
+		
+		<meta property="og:type" content="website">
+
+
+		<link rel="icon" href="/favicon.svg.png">
+    <title>SignUp for Alt Data</title>
+    <style>
+        *{
+            margin:0;
+            border: 0;
+            box-sizing: border-box;
+            font-family: arial;
+        }
+      
+        html{
+            background-color: whitesmoke;
+        }
+        
+        body{
+            padding: 20px;
+            min-height: 100vh;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            
+        }
+        h1{
+            font-size: 24px;
+            color: green;
+            width: fit-content;
+            margin: 10px auto;
+        }
+        input,.redir{
+            font: inherit;
+            display: block;
+            background: white;
+            padding: 10px;
+            box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+            width: 100%;
+           
+            border-radius: 8px;
+        }
+
+        .form-con{
+            border-radius: 12px;
+        }
+
+        .form-control,.inp,.redir{
+            margin-top: 18px;
+        }
+
+        .redir>a{
+            color: purple;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        form{
+            display: block;
+            width: 100%;
+            width: 80vw;
+        }
+        .info{
+            font-size: 10px;
+            color: red;
+        }
+        .form-con{
+            background: #343030;
+            opacity: .7;
+            padding: 20px;
+
+        }
+
+        .inp{
+            background: green;
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            outline: none;
+            border: 0;
+        }
+    </style>
+    <title>signup</title>
+</head>
+<body>
+    
+    <div class="form-con">
+        <form class="reg-form" >
+            <h1>SIGN UP</span></h1>
+            <div class="form-control">
+               
+                <input type="text" placeholder="enter firstname" name="firstname" id="fname" class="" autocomplete="disable" required>
+            </div>
+            <div class="form-control">
+                <input 
+                type="text" 
+                placeholder="enter lastname" 
+                name="lastname" 
+                id="lname" 
+                class="" 
+                autocomplete="disable" 
+                required>
+            </div>
+            <div class="form-control">
+                <input 
+                type="number" 
+                placeholder="enter phone number" name="phone"
+                 id="pno" 
+                autocomplete="disable" minlength="11" maxlength="11" placeholder='090...'
+                required>
+                <div class="email-err" style="color:purple"></div>
+            </div>
+            
+            <div class="form-control">
+                <label for="pwd">password:</label>
+                <input 
+                type="password" 
+                
+                name="password" id="pwd" 
+             
+                required>
+                <div class="pwd-err"></div>
+            </div>                        
+                <input type="submit" value="register" class="inp" id="reg">
+                <div class="redir">already have an account?  <a href='/login'>login</a></div>
+        </form>
+        
+    </div>
+
+    <script>
+        const form = document.querySelector('form');
+        const emailErr = document.querySelector('.email-err')
+        
+
+        form.addEventListener('submit', async (e)=>{
+            e.preventDefault();
+            
+            // reset errors
+            emailErr.textContent = '';
+
+            //get the values
+          
+            let password = form.password.value
+            let phone = form.phone.value.slice(-10)
+            let firstname = form.firstname.value;
+            let lastname = form.lastname.value
+
+            
+
+            try {
+                const res = await fetch('/signup', {
+                    method: 'POST',
+                    body: JSON.stringify({firstname,lastname,phone,email:phone,password}),
+                    headers: {'Content-Type':'application/json'},
+                })
+
+                const data = await res.json();
+                console.log(data);
+
+                if(data.id){
+                    location.assign('/welcome')
+                }
+                if(data.email){
+                    emailErr.textContent = data.email;
+                }
+
+                
+
+            } catch(err){
+                console.log(err);
+            }
+        })
+        /* 
+
+         */
+    </script>
+</body>
+</html>

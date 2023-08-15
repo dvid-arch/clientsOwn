@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <title>updatebal</title>
+  </head>
+  <style>
+
+     input{
+        font-family: arial;
+   
+    padding: 0;
+    outline: .2px;
+    box-shadow: 0 0px 0 0.2px  rgb(140, 135, 123);
+    padding-left: 20px;
+    
+    font-size: 1.4rem;
+    height: 40px;
+    border: 1px solid black;
+    border-radius: 10px;
+    display: block;
+    color: black;
+    background-color: white;
+    transition: all 200ms;
+    width: 80%;
+   
+    margin: 12px auto;
+
+    }
+
+    form{
+        display: block;
+        width: 100%;
+    }
+
+    input[type=submit]:focus{
+        transform: scale(.8);
+    }
+
+
+   
+  </style>
+  <body>
+    <div class="container" style="max-width: 700px">
+      <form>
+        <input
+          type="text"
+          name="user"
+          id="user"
+          class="inp-block"
+          placeholder="enter email"
+          required
+        />
+        <input
+          type="number"
+          placeholder="enter amount"
+          name="amount"
+          id="amount"
+          class="inp-block"
+          required
+        />
+        <input type="submit" value="send" class="btn-block" style="background: #0bda51; color: white; outline: 0; border: 0;" />
+      </form>
+    </div>
+
+    <script>
+      let form = document.querySelector("form");
+      let user = document.querySelector("#user");
+      let amount = document.querySelector("#amount");
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        try {
+            const res = await fetch("/man", {
+          method: "POST",
+          body: JSON.stringify({
+            phone: user.value.slice(-10),
+            amt: Number(amount.value),
+          }),
+          headers: { "Content-Type": "application/json" },
+        });
+        } catch (error) {
+            alert('there was an error, try again')
+            console.log(error)
+        }
+        
+        user.value = "";
+        amount.value = "";
+      });
+    </script>
+  </body>
+</html>

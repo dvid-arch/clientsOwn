@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../assets/style.css">
+    <title>fund wallet</title>
+</head>
+<body>
+    <%- include('../../partials/bhead.ejs') %>
+    <section id="atm">
+        <div class="container send-con">
+            <form class="send">
+                <h2>Fund Using Bank Card</h2>
+                
+                <div class="send-form-control">
+                    <select name="network" id="network" class="inp-block">
+                        <option value="0">Select your Bank</option>
+                        <option value="1">5mb</option>
+                    </select>
+                </div>
+                <div class="">
+                    <input type="text" class="inp-block" placeholder="Card Number">
+                </div>
+                <div class="">
+                    <input type="" class="inp-block">
+                </div>
+                <div class="">
+                    <input type="text" class="inp-block" placeholder="CVV" maxlength="3">
+                </div>
+                <div class="">
+                    <input type="text" class="inp-block" placeholder="Card Pin">
+                </div>
+                <input type="submit" value="proceed" class="btn">
+            </form>
+        </div>
+    </section>
+</body>
+</html>

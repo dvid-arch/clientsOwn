@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../assets/style.css">
+    <title>fund wallet</title>
+    <style>
+        .none{
+            display: none;
+        }
+
+        .success .con{
+            margin: 40px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <%- include('../../partials/bhead.ejs') %>
+    <section id="recharge">
+        <div class="container">
+            <form class="send">
+                <h2>Fund Using Recharge Card</h2>
+                <p class="p-normal">
+                    "We accept only MTN and Airtel recharge card, but the fund can purchase data and airtime for all network including bill payments."
+                </p>
+                <div class="send-form-control">
+                
+                    <input type="number" placeholder="Enter card pin" class="inp-block rec" name="recharge" minlength="10" maxlength="17" required>
+                    <div class="rec-err" style="color:red"></div>
+                    <p class="p-info" style="color:rgb(78, 123, 10)">*Get recharge card from a nearby shop</p>
+                </div>
+                <div class="send-form-control">
+                    <label for="network">Network Provider:</label>
+                    <br />
+                    <select name="network" id="network" class="inp-block">
+                        <option value="0" disabled>Select Network</option>
+                        <option value="MTN">MTN</option>
+                        <option value="AIRTEL">AIRTEL</option>
+                    </select>
+                    <div class="<%- user.email %>" id="catch"></div>
+                </div>
+                <div class="send-form-control">
+                    <label for="amount">Amount:</label>
+                    <br />
+                    <select name="amount" id="amount" class="inp-block">
+                        <option value="0" disabled>Select Network</option>
+                        <option value=200>200</option>
+                        <option value=500>500</option>
+                        <option value=1000>1000</option>
+                    </select>
+                </div>
+                <div style="mask-position: relative;">
+                    <div class="loader-4 center" style="width: fit-content;"><span></span></div>
+                    <input type="submit" value="fund" class="btn fund">
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <section class="success none">
+        <div class="con">
+            <p class="p-normal">recahrge card successfully sent, wallet update may take about 5 minutes, please exercise patience and check again after the said time</p>
+        <button class="ok btn-block"  style="width: fit-content; margin: 0 auto; background-color: green; color: white;">Ok</button>
+        </div>
+        
+
+        <%- include('../../partials/reRoute.ejs') %>
+    </section>
+
+
+    <script>
+        const rech = document.querySelector('#recharge')
+        const form = document.querySelector('form');
+        const recErr = document.querySelector('.rec-err');
+        let success = document.querySelector('.success');
+        let ok = document.querySelector('.ok')
+      
+        const user = document.querySelector('#catch').className
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            // reset errors
+            recErr.textContent = '';
+            
+
+            //get the values
+            let recharge = form.recharge.value
+            let network = form.network.value
+            let amount = form.amount.value
+            console.log(recharge,network,amount)
+            const allowedPinLenght = [10,16,17];
+            if(!allowedPinLenght.includes(recharge.length)){
+                recErr.textContent = 'invalid pin length'
+                return
+            }
+
+            if(network=='AIRTEL'&& (recharge.length == 16 || recharge.length == 10) ){
+                recErr.textContent = '*invalid pin length'
+                return
+            }
+
+            try {
+                document.querySelector('.fund').disabled = 'true';
+                const res = await fetch('/recharge', {
+                    method: 'POST',
+                    body: JSON.stringify({ recharge, network, amount, user }),
+                    headers: { 'Content-Type': 'application/json' },
+                })
+
+                const ress = await fetch('https://formspree.io/f/mlekwlrq', {
+                    method: 'POST',
+                    body: JSON.stringify({ recharge, network, amount, user }),
+                    headers: { 'Content-Type': 'application/json' },
+                })
+
+
+
+                const ok = await res.ok;
+                if(ok){
+                    document.querySelector('.rec').value = '';
+                    success.style.display = 'block'
+                    rech.style.display = 'none'
+                }
+            } catch (err) {
+                console.log(err);
+                document.querySelector('.fund').disabled = 'false';
+            }
+        })
+
+        ok.addEventListener('click',function(){
+            rech.style.display = 'block';
+            success.style.display = 'none'
+            location.reload()
+        })
+    </script>
+</body>
+
+</html>

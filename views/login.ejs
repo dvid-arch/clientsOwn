@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        *{
+            margin:0;
+            border: 0;
+            box-sizing: border-box;
+            font-family: arial;
+        }
+      
+        html{
+            background-color: whitesmoke;
+        }
+        body{
+            padding: 20px;
+            min-height: 100vh;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            
+        }
+        h1{
+            font-size: 24px;
+            color: green;
+            box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+            width: fit-content;
+            margin: 10px auto;
+        }
+        input,.redir{
+            font: inherit;
+            display: block;
+            background: white;
+            padding: 10px;
+            box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+            width: 100%;
+            border: 1px solid white;
+            border-radius: 8px;
+        }
+
+        .form-con{
+            border-radius: 12px;
+        }
+
+        .form-control,.inp,.redir{
+            margin-top: 18px;
+        }
+
+        .redir>a{
+            color: purple;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        form{
+            display: block;
+            width: 100%;
+            width: 80vw;
+        }
+        .info{
+            font-size: 10px;
+            color: red;
+        }
+        .form-con{
+            background: #fff;
+            opacity: .7;
+            padding: 20px;
+
+        }
+
+        .inp{
+            background: green;
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+        }
+    </style>
+    <title>login</title>
+</head>
+<body>
+    <div class="form-con">
+        <form class="reg-form">
+            <h1 >LOGIN</span></h1>
+            <div class="form-control">
+                <label for="email">phone number:</label>
+                <input 
+                type="text" 
+                placeholder="enter phone number" 
+                name="email" id="email" 
+                autocomplete="disable"
+                maxlength="11"
+                required>
+                <div class="email-err"></div>
+            </div>
+            <div class="form-control">
+                <label for="pwd">password:</label>
+                <input 
+                type="password" 
+                
+                name="password" id="pwd" 
+                autocomplete="disable" 
+                required>
+                <div class="pwd-err"></div>
+            </div>                
+                <input type="submit" value="login" class="inp" id="reg" >
+                <div class='redir'>do not have an Account? <a href="/signup">signup</a></div>
+        </form>
+    </div>
+    
+
+    <script>
+        const form = document.querySelector('form');
+        const emailErr = document.querySelector('.email-err')
+        const pwdErr = document.querySelector('.pwd-err')
+
+        form.addEventListener('submit', async (e)=>{
+            e.preventDefault();
+
+            // reset errors
+            emailErr.textContent = '';
+            pwdErr.textContent = '';
+
+            //get the values
+            let email = form.email.value.slice(-10)
+            let password = form.password.value
+
+            try {
+                const res = await fetch('/login', {
+                    method: 'POST',
+                    body: JSON.stringify({email,password}),
+                    headers: {'Content-Type':'application/json'},
+                })
+
+                const data = await res.json();
+                console.log(data);
+                
+                if(data.id){
+                    location.assign('/welcome')
+                }
+                if(data.errors.email){
+                    emailErr.textContent = data.errors.email;
+                }
+
+                if(data.errors.password){
+                    pwdErr.textContent = data.errors.password;
+                }
+                
+
+            } catch(err){
+                console.log(err);
+            }
+        })
+        /* 
+
+         */
+    </script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        padding: 30px;
+        background: rgb(233, 232, 232);
+      }
+      input {
+        display: block;
+        margin-top: 4px;
+        width: 100%;
+        padding: 8px 12px;
+        font-size: 1.2rem;
+        outline: 0;
+        border: 1px solid gray;
+        border-radius: 12px;
+      }
+      label {
+        display: inline-block;
+        font-size: 1.2rem;
+        font-weight: bolder;
+        color: gray;
+        margin-top: 16px;
+      }
+      input:focus {
+        outline: 1px solid green;
+      }
+      p {
+        color: red;
+        text-align: center;
+        margin: 24px 0;
+      }
+
+      .apply {
+        background: green;
+        color: white;
+      }
+
+      .container{
+        padding: 40px 24px;
+        max-width: 400px;
+        margin: 0 auto;
+        background: white;
+        border-radius: 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <p>skip anyone you dont want to fill</p>
+    <div class="container">
+      <div class="form-control">
+        <div class="changeWa">
+          <form>
+            <div>
+              <label for="bank">bank</label>
+              <input type="text" name="bank" id="bank" />
+            </div>
+            <div>
+              <label for="accno">new acc number</label>
+              <input type="text" name="accno" id="accno" />
+            </div>
+            <div>
+              <label for="accname">new acc name</label>
+              <input type="text" name="accname" id="accname" />
+            </div>
+            <div>
+              <label for="wa-num">new whatsapp number</label>
+              <input type="tel" name="wanum" id="waNum" />
+            </div>
+            <div>
+              <label for="wa-num">new whatsapp link</label>
+              <input type="url" name="walink" id="walink" />
+            </div>
+            <input type="submit" value="apply" class="apply" />
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const form = document.querySelector("form");
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const phone = form.wanum.value;
+        const walink = form.walink.value;
+        const bank = form.bank.value;
+        const accno = form.accno.value;
+        const accname = form.accname.value;
+
+        console.log(phone);
+        try {
+          const res = await fetch("/adminup", {
+            method: "POST",
+            body: JSON.stringify({ phone,walink,bank,accno,accname }),
+            headers: { "Content-Type": "application/json" },
+          });
+          alert('successful')
+
+        } catch (error) {
+            alert('error occurred, please refresh and try again')
+          console.log(error);
+        }
+      });
+    </script>
+  </body>
+</html>

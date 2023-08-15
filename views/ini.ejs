@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="I found this website that sales data very cheap, I think you will be interested... They give 11GB bonus to new users and if you invite someone to the website, you get 150 Naira for each person...">
+    <link rel="icon" href="/site_icon.jpg">
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="/css/purchase.css">
+    <title>welcome</title>
+    <style>
+
+        *{
+            box-sizing: border;
+            margin: 0;
+            padding: 0;
+            font-family: 'Monserrat';
+        }
+
+        .w-flex{
+            margin-top: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        
+
+        
+        .none{
+            display: none;
+        }
+
+
+        .loader-line {
+            width: 200px;
+            height: 3px;
+            position: relative;
+            overflow: hidden;
+            background-color: #ddd;
+            margin: 0 auto;
+            -webkit-border-radius: 20px;
+            -moz-border-radius: 20px;
+            border-radius: 20px;
+        }
+
+        .loader-line:before {
+            content: "";
+            position: absolute;
+            left: -50%;
+            height: 3px;
+            width: 40%;
+            background-color: #1E90FF;
+            -webkit-animation: lineAnim 1s linear infinite;
+            -moz-animation: lineAnim 1s linear infinite;
+            animation: lineAnim 1s linear infinite;
+            -webkit-border-radius: 20px;
+            -moz-border-radius: 20px;
+            border-radius: 20px;
+        }
+
+        @keyframes lineAnim {
+            0% {
+                left: -40%;
+            }
+            50% {
+                left: 20%;
+                width: 80%;
+            }
+            100% {
+                left: 100%;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container w-flex" >
+        <h1 style=" padding:10px; font-size: 2em; color: #161428; text-align: center; letter-spacing: 2px; text-transform: uppercase; margin-top: 50px;"><span style="font-weight: bold;">Verifying your account...</span></h1>
+       
+        <div class="loader-line"></div>
+        <h2 style="text-align: center; font-size: 14px; margin-top: 10px; padding: 10px; color: #15e41f; font-weight: 100;">
+            Purchase up to N1,000 of data and receive your 11GB welcome bonus.
+        </h2>
+    </div>
+
+    <script>
+        setTimeout(()=>{location.assign('/')},4000)
+    </script>
+</body>
+</html>

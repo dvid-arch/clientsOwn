@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" href="/site_icon.jpg">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="../assets/style.css">
+    <link rel="stylesheet" type="text/css" href="../assets/purchase.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+
+
+    <title>data</title>
+
+    <style type="text/css">
+        * {
+
+            padding: 0;
+            margin: 0;
+        }
+
+        .none {
+            display: none;
+        }
+
+        .block {
+            display: block;
+        }
+
+        .user_wrapper {
+            color: black;
+            width: 90%;
+            margin: 20px auto 5px auto;
+            display: grid;
+            grid-template-columns: 50px 1fr;
+        }
+
+        .user_wrapper i {
+            font-size: 40px;
+        }
+
+
+        .user_wrapper p {
+            font-size: 13px;
+            font-weight: 600;
+            margin-top: 14px;
+        }
+
+        .wallet_wrapper {
+            background-color: #7f00ff;
+            padding: 20px 25px;
+            box-sizing: border-box;
+            font-size: 0.8rem;
+            font-weight: 400;
+            color: rgb(250, 250, 250);
+            width: 90%;
+            margin: 20px auto 0 auto;
+            border-radius: 10px;
+        }
+
+
+        .fund_wallet_wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+
+        .fund_wallet_wrapper i {
+            font-size: 30px;
+            color: white;
+        }
+
+
+        .fund_wallet_wrapper h2 {
+            font-weight: 400;
+            margin-top: 8px;
+            font-size: 13px;
+            color: 190, 190, 190;
+        }
+
+       
+    </style>
+</head>
+
+<body style="position:relative">
+    <div id="selectNet">
+        <div class="catch none"><%- user.id %></div>
+        <div class="wallet none"><%- user.walBal %></div>
+        <div class="loader-4 center" style="width: fit-content;"><span></span></div>
+        <div class="user_wrapper">
+            <i class="fas fa-user-circle"></i>
+            <p>Hello, <%- user.firstname %> <%- user.lastname %></p>
+        </div>
+        <section class="wallet_wrapper">
+            <h2>Wallet Balance: <span class="wb">₦<%- user.walBal %></span></h2>
+            <h2>Referral Reward: ₦<%- (user.refered * 350) %></h2>
+
+            <div class="fund_wallet_wrapper">
+                <article onclick="window.location.href='/best/fund'">
+                    <i class="fas fa-university"></i>
+                    <h2>Add Money</h2>
+                </article>
+
+                <article onclick="window.location.href='/best/withdraw'">
+                    <i class="fas fa-location-arrow"></i>
+                    <h2>Withdraw</h2>
+                </article>
+
+
+                <article onclick="window.location.href='/best/referral'">
+                    <i class="fas fa-wallet"></i>
+                    <h2>My Wallet</h2>
+                </article>
+
+            </div>
+
+        </section>
+
+        <div class="main_wrapper">
+
+
+            <div class="not_header">
+
+                <main role="main">
+
+                    <form class="number_and_network_form">
+                        <input class="number" type="number" name="number" placeholder="Enter Phone Number">
+                    </form>
+                    <br><br>
+                    <p class="courage">Purchase up to ₦1,000 of data to receive the 11GB bonus. <br>The 11GB bonus is
+                        available only for new users.</p>
+
+
+                    <div class="bundle_wrapper">
+
+						<div class="prices price_200">
+							<em class="no_bonus bonus">- no bonus</em>
+							<span>₦<span class="val">200</span></span>
+						</div>
+						
+						
+						<div class="prices price_500">
+							<em class="second bonus">+₦600 bonus</em>
+							<span>₦<span class="val">500</span></span>
+						</div>
+					
+
+
+						<div class="prices price_1000">
+							<em class="third bonus">+₦600 bonus</em>
+							<span>₦<span class="val">1000</span></span>
+						</div>
+
+
+						
+
+
+					</div>
+
+
+                    <section class="fund none">
+                        <button class="fund_button" onclick="window.location='/best/fund' ">Oops!!! insufficient
+                            balance<br><span>Fund Wallet</span></button>fund_button_wrapper
+                    </section>
+
+                    <br><br><br>
+
+                    <p class="term_apply">Terms and Condition Apply</p>
+
+                    <div class="term_home">
+                        <a href="/term">Terms of Service</a>
+                        <a href="/purchase">Home</a>
+                    </div>
+
+                    <br><br><br><br>
+
+                </main>
+            </div>
+        </div>
+
+    </div>
+    <div hidden id="spinner"></div>
+
+    <section class="success none" style="color:black;">
+        <div class="container break-down">
+            <div class="profileInfo">
+
+                <div>
+                    <span class="name">Recievers Number:</span>
+                    <span class="value rno"></span>
+                </div>
+
+                <div>
+                    <span class="name">Airtime Bundle:</span>
+                    <span class="value amt"></span>
+                </div>
+                <div>
+                    <span class="name">Bonus:</span>
+                    <span class="value bon"></span>
+                </div>
+                <div>
+                    <span class="name">Wallet Balance:</span>
+                    <span class="value wal-bal">0</span>
+                </div>
+                <div>
+                    <span class="name">referral count:</span>
+                    <span class="value"><%- user.refered %></span>
+                </div>
+
+                <div>
+                    <span class="name">Status:</span>
+                    <% if(user.refered>= 9) { %>
+                        <span class="value">success</span>
+                        <% } %>
+                            <% if(user.refered < 9) { %>
+                                <span class="value" style="color:#c772036a">pending...</span>
+                                <% } %>
+                </div>
+                <% if(user.refered < 9) { %>
+                    <p class="p-normal">you are required to have atleast refered 9 people before being able to make
+                        a successful purchase and access our bonus read our terms of services to know more</p>
+                    <% } %>
+                        <div class="flex-op">
+                            <a href="/best/referral" class="btn-block"
+                                style="width: 150px; color: white; border:none; background-color: green;">refer</a>
+                            <a href="/tos" class="btn-block"
+                                style="width: 150px; color: white; border:none; background-color: rgb(6, 62, 6);">tos</a>
+                        </div>
+
+            </div>
+        </div>
+
+    </section>
+
+
+
+
+
+
+
+    <script>
+
+        const number = document.querySelector("input");
+        let walletballance = document.querySelector('.wallet').textContent
+
+        const id = document.querySelector('.catch').textContent
+
+        const offerItem = document.querySelectorAll('.prices')
+        const loader = document.querySelector('#spinner')
+        const main = document.querySelector('#selectNet')
+        const breakdown = document.querySelectorAll('.break-down')
+
+
+
+        let amount;
+        let bonus;
+
+        for (const item of offerItem) {
+            item.addEventListener('click', async () => {
+
+           
+
+
+                amount = item.querySelector('.val').textContent
+                bonus = item.querySelector('.bonus').textContent
+                if (number.value.trim() == "") {
+                    alert("Please enter phone number for the data purchase.")
+                    return;
+                } else if (number.value.trim()[0] != 0) {
+                    alert('Please let your phone number start with "0", do not add country code.');
+                    return;
+                } else if (number.value.trim().length != 11) {
+                    alert("The number you entered is not a valid phone number");
+                    return
+
+                }
+
+                if (Number(amount) > Number(walletballance)) {
+                    alert('insufficient funds please fund wallet')
+                    return
+                }
+
+                main.classList.toggle('none')
+                loader.removeAttribute('hidden')
+
+
+
+                const upWal = await fetch('/upWal',
+                    {
+                        method: 'POST',
+                        body: JSON.stringify({ id, amount: Number(amount) }),
+                        headers: { 'Content-Type': 'application/json' },
+                    }
+                )
+
+                let updatedBal = await upWal.json()
+
+                if (updatedBal) {
+                    document.querySelector('.wb').textContent = '₦' + String(updatedBal.walBal)
+                    loader.remove();
+                    document.querySelector('.success').classList.remove('none')
+                    document.querySelector('.amt').textContent = amount
+                    document.querySelector('.bon').textContent = bonus
+
+                    document.querySelector('.rno').textContent = number.value;
+
+
+                    document.querySelector('.wal-bal').textContent = "N" + String(updatedBal.walBal)
+                    document.querySelector('.wb').textContent = String(updatedBal.walBal)
+
+                    
+                    number.value = '';
+                    return;
+                }
+
+
+            })
+        }
+
+
+
+
+
+    </script>
+</body>
+
+</html>

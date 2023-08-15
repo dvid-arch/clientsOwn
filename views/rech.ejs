@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        *{
+            padding: 8px;
+
+        }
+        body {
+            background-color: rgb(25, 27, 26);
+            padding: 0 15px;
+        }
+
+        .flex {
+            background-color: rgb(236, 218, 218);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+        }
+
+       
+
+        .flex span {
+            display: block;
+            padding: 4px;
+            border-radius: 4px;
+            flex-basis: 100/5%;
+        }
+
+        .bold {
+            background-color: rgb(31, 14, 93);
+            font-weight: bolder;
+            background-color: #0bda51;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="contain">
+        <%  rech.forEach(function(user) { %>
+            <div class="flex div <%- (user.id) %>">
+                <span class="">
+                    <%= user.recharge[0][0] %>
+                </span>
+                <span class="bold amount">
+                    <%= user.recharge[0][1] %>
+                </span>
+                <span class="network">
+                    <%= user.recharge[0][2] %>
+                </span>
+                
+                <span class="appr copy bold">
+                    <a href=`<%- user.id %>` class="approve"><i class="fa fa-send-o"></i></a>
+                </span>
+            </div>
+    
+            <% }) %>
+    </div>
+    
+            <script>
+
+                let approve = document.querySelector('.appr');
+                let id = document.querySelector('.approve').getAttribute('href')
+                let getAmount = document.querySelector('.amount').textContent;
+                let allDiv = document.querySelectorAll('.div')
+                let div = document.querySelector(`.div`)
+                let contain = document.querySelector('.contain')
+
+
+                const amount = Number(getAmount)
+                id = id.replace(/`/g, '')
+
+                approve.addEventListener('click', async (e) => {
+                    e.preventDefault();
+
+                    // reset errors
+
+                    //get the values
+
+                    try {
+                        const res = await fetch('/appr', {
+                            method: 'POST',
+                            body: JSON.stringify({ id, amount }),
+                            headers: { 'Content-Type': 'application/json' },
+                        })
+
+                        const ok = await res.ok;
+                        if (ok) {
+                            for (const items of allDiv) {
+                                if (items.className.includes(id)) {
+                                    items.remove()
+                                    location.reload()
+                                }
+                            }
+                        }           
+
+                    } catch (err) {
+                        console.log(err);
+                    }
+                })
+            </script>
+</body>
+
+</html>

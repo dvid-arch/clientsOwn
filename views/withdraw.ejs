@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/style.css">
+    <title>withdraw</title>
+</head>
+<body>
+    <%- include('partials/bhead.ejs') %>
+    <hr style="background-color: #fff;">
+    <section id="withdraw">
+        <div class="container withdraw">
+        <h1>IS YOUR REWARD UP TO N10,000?</h1>
+        <p class="p">Enter your back details below to Withdraw your reward</p>
+        <form class="send-con">
+            <div class="">
+                <input type="text" class="inp-block" placeholder="enter account name" required>
+            </div>
+            <div class="">
+                <input type="text" class="inp-block" placeholder="enter account number" required>
+            </div>
+            <div class="send-form-control">
+                <select name="selBank" id="selBank" class="inp-block" required>
+                <option disabled selected>Select your bank</option>
+				<option value="access">Access Bank</option>
+				<option value="ecobank">Ecobank</option>
+				<option value="Fidelity">Fidelity Bank</option>
+				<option value="first_bank">First Bank</option>
+				<option value="first_city_monument_bank">First City Monument Bank</option>
+				<option value="heritage_bank">Heritage Bank</option>
+				<option value="gtb">GTB</option>
+				<option value="jaiz">Jaiz Bank</option>
+				<option value="keystone">Keystone</option>
+				<option value="kuda">Kuda</option>
+				<option value="opay">Opay</option>
+				<option value="palmpay">PalmPay</option>
+				<option value="polaris">Polaris Bank</option>
+				<option value="sterling">Sterling Bank</option>
+				<option value="uba">UBA</option>
+				<option value="union_bank">Union Bank</option>
+				<option value="wema">Wema Bank</option>
+				<option value="zenith">Zenith Bank</option>
+                </select>
+            </div>
+            <input type="submit" value="Withdraw" class="inp-block">
+        </form>
+        </div>
+    </section>
+    <div hidden class="catchPur"><%- user.purCount %></div>
+    <div hidden class="catchId"><%- user.id %></div>
+    
+
+    <script>
+        const id = document.querySelector('.catchId').textContent;
+        
+        const form = document.querySelector("form");
+        const refWard = document.querySelector('.refWard').textContent
+        const purCount = document.querySelector('.catchPur').textContent
+        console.log(amount,id)
+        form.addEventListener('submit',async (e)=>{
+            e.preventDefault()
+
+            if(Number(refWard)<10000){
+                alert('Insufficient Fund!!! You must have up to N10,000 in your reward before withdrawing.')
+                return
+            } else if(Number(purCount)<1){
+                alert('Oops!!! Because you have never purchased up to N500 of data since you registered ,\n you can not withdraw rewards at this time. You need to have purchased data bundle with us (at least N500) before being a valid user to withdraw rewards... ')
+                alert('please fund your wallet to purchase data with us for the first time and become eligible to withdraw your rewards... Thank You.')
+                return;
+            } else{
+                alert('successfully placed withdrawal \n please be patient as this process may take up to 9hours');
+                const upWal = await fetch('/upRefWal',
+                        {
+                            method: 'POST',
+                            body: JSON.stringify({ id}),
+                            headers: { 'Content-Type': 'application/json' },
+                        }
+                    )
+            }
+
+            let updatedBal = await upWal.json()
+
+            document.querySelector('.refWard').textContent = Number(updatedBal.refered) * 350;
+        })
+		
+    </script>
+    
+</body>
+</html>

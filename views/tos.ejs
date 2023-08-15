@@ -1,0 +1,224 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="stylesheet" type="text/css" href="/css/fontawesome/css/all.css">
+    <style>
+        * {
+  text-decoration: none;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Times New Roman", Times, serif;
+  color: black;
+}
+
+body{
+    background-color: whitesmoke;
+}
+
+main {
+    margin: 20px 20px;
+    max-width: 870px;
+    padding: 20px 30px;
+    background-color: white;
+}
+
+main ul li{
+    margin-bottom: 8px;
+    line-height: 1.5;
+    font-size: 1.2rem;
+    color: rgb(63, 62, 56);
+}
+
+main h2{
+    font-size: 48px;
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.display-flex {
+  display: flex;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.justify-content-space-between {
+  justify-content: space-between;
+}
+
+.justify-content-center {
+  justify-content: center;
+}
+
+.hidden {
+  overflow: hidden;
+}
+
+/* APPLYING MARGIN ON NAVBAR LINKS */
+
+.margin-x {
+  margin-left: 18px;
+  margin-right: 18px;
+}
+
+
+
+/* NAVBAR-MENU-ICON (HAMBURGER) */
+
+.hamburger {
+  display: none;
+  background-color: transparent;
+  border: none;
+  cursor:pointer;
+}
+
+.bar {
+  display: block;
+  width: 25px;
+  height: 3px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  background-color: white;
+}
+
+.navbar {
+    max-width: 1270px;
+    padding: 20px 40px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #180c30;
+  box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.25);
+}
+
+.nav-links {
+    color: white;
+  transition: 0.3s ease-in-out;
+}
+
+.nav-links:hover {
+  color: #ea4f4c;
+}
+
+@media (max-width: 768px) {
+
+    main h2{
+        font-size: 30px;
+    }
+  .hamburger {
+    display: block;
+    z-index: 15;
+  }
+  .hamburger.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger.active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+  .hamburger.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+  .nav-menu {
+    position: fixed;
+    right: -100%;
+    top: 0;
+    gap: 0;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #222;
+    box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.25);
+    width: 100%;
+    min-height: 100vh;
+    text-align: center;
+    transition: 0.6s ease-in-out;
+    z-index: 10;
+  }
+
+  .nav-menu li{
+    letter-spacing: 5px;
+    font-size: 20px;
+    margin-bottom: 6px;
+    border-bottom: 1px solid gray;
+  }
+  .active {
+    right: 0% !important;
+  }
+}
+
+
+    </style>
+	<title>Terms of Service</title>
+</head>
+<body>
+
+	<div class="body_overlay"></div>
+	<header classmain_header">
+	
+			<nav>
+                <div class="container">
+                  <div
+                    class="display-flex align-items-center justify-content-space-between navbar margin-top"
+                  >
+                    <div>
+                      <h2 class="margin-x" style="color: white; font-size: 20px;">+11GB</h2>
+                    </div>
+                    <div>
+                      <ul class="display-flex align-items-center nav-menu">
+                        <li class="margin-x">
+                          <a class="nav-links" href="/">Home</a>
+                        </li>
+                        <li class="margin-x">
+                          <a class="nav-links" href="/best/referral">Wallet</a>
+                        </li>
+                        <li class="margin-x">
+                          <a class="nav-links" href="/best/partnership">Partner</a>
+                        </li>
+                        <li class="margin-x">
+                            <a class="nav-links" href="/best/fund">Fund</a>
+                          </li>
+                      </ul>
+                    </div>
+                    <button class="hamburger margin-x">
+                      <span class="bar"></span>
+                      <span class="bar"></span>
+                      <span class="bar"></span>
+                    </button>
+                  </div>
+                </div>
+              </nav>
+			</nav>
+	</header>
+
+<main>
+        
+		<h2>Terms of Services</h2>
+
+		<ul>
+			<li>You must invite at least 9 people before being able to purchase and receiving data from Alt Data</li>
+			<li>To withdraw referral rewards, you must have at least N10,000 in your referral balance.</li>
+			<li>You will not be able to withdraw your rewards if you have not purchase data on our site (At least N500 of data)</li>
+			<li>If you purchase data when you are not qualified, the data will main hanging until you complete the necessary requirements.</li>
+			<li>All transactions made to our account are not refundable.</li>
+		</ul>
+	<main>
+    <script>
+        const hamburger = document.querySelector(".hamburger");
+const navMenu = document.querySelector(".nav-menu");
+
+hamburger.addEventListener("click", function () {
+  hamburger.classList.toggle("active");
+  navMenu.classList.toggle("active");
+});
+
+    </script>
+</body>
+</html>
