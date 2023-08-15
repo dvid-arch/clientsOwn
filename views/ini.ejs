@@ -1,96 +1,136 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="I found this website that sales data very cheap, I think you will be interested... They give 11GB bonus to new users and if you invite someone to the website, you get 150 Naira for each person...">
-    <link rel="icon" href="/site_icon.jpg">
-
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" type="text/css" href="/css/purchase.css">
-    <title>welcome</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
     <style>
+        @import url("https://fonts.googleapis.com/css2?family=Michroma&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
 
-        *{
-            box-sizing: border;
-            margin: 0;
-            padding: 0;
-            font-family: 'Monserrat';
-        }
+body {
+  font-family: "Michroma", sans-serif;
+  height: 100vh;
+}
 
-        .w-flex{
-            margin-top: 200px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
+.container {
+  background-color: black;
+  color: #fff;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
 
-        
+.loading-page {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: linear-gradient(to right, #642c5d, #68275f, rgb(161, 27, 139));
 
-        
-        .none{
-            display: none;
-        }
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
+  justify-content: center;
+  color: #191654;
+}
 
+#svg {
+  height: 150px;
+  width: 150px;
+  stroke: white;
+  fill-opacity: 0;
+  stroke-width: 3px;
+  stroke-dasharray: 4500;
+  animation: draw 8s ease;
+}
 
-        .loader-line {
-            width: 200px;
-            height: 3px;
-            position: relative;
-            overflow: hidden;
-            background-color: #ddd;
-            margin: 0 auto;
-            -webkit-border-radius: 20px;
-            -moz-border-radius: 20px;
-            border-radius: 20px;
-        }
+@keyframes draw {
+  0% {
+    stroke-dashoffset: 4500;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
 
-        .loader-line:before {
-            content: "";
-            position: absolute;
-            left: -50%;
-            height: 3px;
-            width: 40%;
-            background-color: #1E90FF;
-            -webkit-animation: lineAnim 1s linear infinite;
-            -moz-animation: lineAnim 1s linear infinite;
-            animation: lineAnim 1s linear infinite;
-            -webkit-border-radius: 20px;
-            -moz-border-radius: 20px;
-            border-radius: 20px;
-        }
+.name-container {
+  height: 30px;
+  overflow: hidden;
+}
 
-        @keyframes lineAnim {
-            0% {
-                left: -40%;
-            }
-            50% {
-                left: 20%;
-                width: 80%;
-            }
-            100% {
-                left: 100%;
-                width: 100%;
-            }
-        }
+.logo-name {
+  color: #fff;
+  font-size: 20px;
+  letter-spacing: 12px;
+  text-transform: uppercase;
+  margin-left: 20px;
+  font-weight: bolder;
+}
     </style>
 </head>
+
 <body>
-    <div class="container w-flex" >
-        <h1 style=" padding:10px; font-size: 2em; color: #161428; text-align: center; letter-spacing: 2px; text-transform: uppercase; margin-top: 50px;"><span style="font-weight: bold;">Verifying your account...</span></h1>
-       
-        <div class="loader-line"></div>
-        <h2 style="text-align: center; font-size: 14px; margin-top: 10px; padding: 10px; color: #15e41f; font-weight: 100;">
-            Purchase up to N1,000 of data and receive your 11GB welcome bonus.
-        </h2>
+    <div class="container">
+        <p style="padding: 24px; text-align: center;">purchase upto 1000N of data and recieve your welcome bonus</p>
+
     </div>
 
-    <script>
-        setTimeout(()=>{location.assign('/')},4000)
-    </script>
+    <div class="loading-page">
+      <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 640 512" id="svg">
+        <path d="M54.2 202.9C123.2 136.7 216.8 96 320 96s196.8 40.7 265.8 106.9c12.8 12.2 33 11.8 45.2-.9s11.8-33-.9-45.2C549.7 79.5 440.4 32 320 32S90.3 79.5 9.8 156.7C-2.9 169-3.3 189.2 8.9 202s32.5 13.2 45.2 .9zM320 256c56.8 0 108.6 21.1 148.2 56c13.3 11.7 33.5 10.4 45.2-2.8s10.4-33.5-2.8-45.2C459.8 219.2 393 192 320 192s-139.8 27.2-190.5 72c-13.3 11.7-14.5 31.9-2.8 45.2s31.9 14.5 45.2 2.8c39.5-34.9 91.3-56 148.2-56zm64 160a64 64 0 1 0 -128 0 64 64 0 1 0 128 0z"/>
+      </svg>
+
+
+        <div class="name-container">
+            <div class="logo-name">new data</div>
+            
+        </div>
+    </div>
 </body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"
+    integrity="sha512-gmwBmiTVER57N3jYS3LinA9eb8aHrJua5iQD7yqYCKa5x6Jjc7VDVaEA0je0Lu0bP9j7tEjV3+1qUm6loO99Kw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script >
+
+setTimeout(()=>{location.assign('/')},8000)
+
+    gsap.fromTo(
+  ".loading-page",
+  { opacity: 1 },
+  {
+    opacity: 0,
+    display: "none",
+    duration: 1.5,
+    delay: 3.5,
+  }
+);
+
+gsap.fromTo(
+  ".logo-name",
+  {
+    y: 50,
+    opacity: 0,
+  },
+  {
+    y: 0,
+    opacity: 1,
+    duration: 2,
+    delay: 0.5,
+  }
+);
+</script>
+
 </html>
+
