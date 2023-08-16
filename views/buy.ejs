@@ -88,18 +88,123 @@
             color: 190, 190, 190;
         }
 
+        .flex{
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+            padding-left: 8px;
+		}
+
+		.flex div{
+			flex: .9;
+		}
+
+		.flex .navMenu{
+			flex: .1;
+		}
+
+		.flex .navMenu{
+			
+			display: flex;
+			justify-content: right;
+			flex-direction: column;
+			padding-right: 20px;
+		}
+
+		.navMenu span{
+			display: block;
+			width: 30px;
+			height: 4px;
+			background: black;
+			margin-top: 2px;
+
+		}
+
+		.nav{
+			width: 65%;
+			height: 100vh;
+			position: fixed;
+			top: 0;
+			right: -100%;
+			text-align: right;
+			padding-right: 10%;
+			font-size: 2rem;
+			background-color: #f0f0f0;
+			transition: all 300ms ease-in-out;
+			z-index: 10;
+		}
+
+		.overla{
+			width: 100vw;
+			height: 100vh;
+			position: fixed;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			background: rgba(0, 0, 0,.3);
+			opacity: 0;
+			pointer-events: none;
+		}
+
+		.nav.active{
+			right: 0;
+		}
+
+		.overla.active{
+			opacity: 1;
+			pointer-events: all;
+		}
+
+		.nav ul{
+			margin-top: 20%;
+		}
+
+		.nav a{
+			display: block;
+			margin-bottom: 8px;
+			color: black;
+		}
+		.exit{
+
+			color: #7f00ff;
+			font-size: 4rem;
+		}
        
     </style>
 </head>
 
 <body style="position:relative">
+    <nav class="nav">
+		<span class="exit">&times;</span>
+		<ul>
+			
+			<li><a href='/'>Home</a>
+				</li>
+                <li><a href=`<%- admin.walink %>`>Contact</a>
+				</li>
+			<li><a href="/best/purchase/air">Buy Airtime</a></li>
+			<li><a href="/best/partnership">Resell Data</a></li>
+            <li><a href="/tos">Terms of Service</a></li>
+		</ul>
+	</nav>
+	<div class="overla">
+
+	</div>
     <div id="selectNet">
         <div class="catch none"><%- user.id %></div>
         <div class="wallet none"><%- user.walBal %></div>
         <div class="loader-4 center" style="width: fit-content;"><span></span></div>
-        <div class="user_wrapper">
-            <i class="fas fa-user-circle"></i>
-            <p>Hello, <%- user.firstname %> <%- admin.bank %></p>
+        <div class="flex">
+            <div class="user_wrapper">
+                <i class="fas fa-user-circle"></i>
+                <p>Hello,  <%- user.firstname %> <%- user.lastname %></p>
+            </div>
+            <div class="navMenu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
         <section class="wallet_wrapper">
             <h2>Wallet Balance: <span class="wb">₦<%- user.walBal %></span></h2>
@@ -137,7 +242,7 @@
                         <input class="number" type="number" name="number" placeholder="Enter Phone Number">
                     </form>
                     <br><br>
-                    <p class="courage">Purchase up to ₦1,000 of data to receive the 11GB bonus. <br>The 11GB bonus is
+                    <p class="courage">Purchase up to ₦1,000 of data to receive the 7GB bonus. <br>The 7GB bonus is
                         available only for new users.</p>
 
                     <div class="bundle_wrapper">
@@ -326,7 +431,20 @@
             })
         }
 
+        document.querySelector('.navMenu').addEventListener('click',()=>{
+    document.querySelector('.nav').classList.add('active')
+    document.querySelector('.overla').classList.add('active')
 
+})
+
+document.querySelector('.exit').addEventListener('click', ()=>{
+    document.querySelector('.nav').classList.remove('active')
+    document.querySelector('.overla').classList.remove('active')
+})
+document.querySelector('.overla').addEventListener('click',()=>{
+    document.querySelector('.nav').classList.remove('active')
+    document.querySelector('.overla').classList.remove('active')
+})
 
 
 

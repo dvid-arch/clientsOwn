@@ -3,19 +3,14 @@ const User = require('../model/airUser')
 const jwt = require('jsonwebtoken')
 
 const handleErrors = (err)=>{
-    console.log(err.message)
+    console.log('error',err)
     let errors = { email: '', password: ''}
 
 
     //incorrect email
     if(err.message === 'incorrect email'){
         errors.email = 'that phone number is not registered'
-    }
-
-    //incorrect pwd
-    if(err.message === 'incorrect password'){
-        errors.password = 'that password is incorrect'
-    }
+    }  
 
 
     //duplicate error code
@@ -46,7 +41,7 @@ module.exports.sigup_get = (req,res)=>{
     
     res.render('signup');
 }
-/* {"firstname":"emmanuel","lastname":"emmanuel","phone":070890316, "email":"abc@gmail.com", "password":"abcd"} */
+
 module.exports.sigup_post = async (req,res)=>{
     console.log(req.body)
     const {firstname,lastname,phone,email, password } = req.body

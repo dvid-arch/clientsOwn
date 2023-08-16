@@ -1,128 +1,299 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        *{
-            margin:0;
-            border: 0;
-            box-sizing: border-box;
-            font-family: arial;
-        }
-      
-        html{
-            background-color: whitesmoke;
-        }
-        body{
-            padding: 20px;
-            min-height: 100vh;
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            
-        }
-        h1{
-            font-size: 24px;
-            color: green;
-            box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
-            width: fit-content;
-            margin: 10px auto;
-        }
-        input,.redir{
-            font: inherit;
-            display: block;
-            background: white;
-            padding: 10px;
-            box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
-            width: 100%;
-            border: 1px solid white;
-            border-radius: 8px;
-        }
+	<head>
 
-        .form-con{
-            border-radius: 12px;
-        }
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="Buy data bundle at the cheapest rate, you can also refer friends and earn cash.">
 
-        .form-control,.inp,.redir{
-            margin-top: 18px;
-        }
+		<link rel="icon" href="/site_icon.jpg">
+		
+	
+		<meta property="og:image:height" content="312">
+		<meta property="og:image:width" content="600">
+		
+		<meta property="og:type" content="website">
 
-        .redir>a{
-            color: purple;
-            font-weight: bold;
-            text-align: center;
-        }
 
-        form{
-            display: block;
-            width: 100%;
-            width: 80vw;
-        }
-        .info{
-            font-size: 10px;
-            color: red;
-        }
-        .form-con{
-            background: #fff;
-            opacity: .7;
-            padding: 20px;
+		<link rel="icon" href="/favicon.svg.png">
 
-        }
 
-        .inp{
-            background: green;
-            font-size: 24px;
-            font-weight: bold;
-            color: white;
-        }
-    </style>
-    <title>login</title>
-</head>
-<body>
-    <div class="form-con">
-        <form class="reg-form">
-            <h1 >LOGIN</span></h1>
-            <div class="form-control">
-                <label for="email">phone number:</label>
-                <input 
-                type="text" 
-                placeholder="enter phone number" 
-                name="email" id="email" 
-                autocomplete="disable"
-                maxlength="11"
-                required>
-                <div class="email-err"></div>
-            </div>
-            <div class="form-control">
-                <label for="pwd">password:</label>
-                <input 
-                type="password" 
+
+
+
+
+		<title>Login to Alt Data</title>
+
+
+		<style type="text/css">
+
+
+
+
+			@media screen and (min-width: 200px){
+
+
+				*{
+					padding: 0;
+					margin: 0;
+					list-style-type: none;
+
+				}
+
+				html{
+					font-family: arial, helvetica, sans-serif;
+					font-size: 8px;
+				}
+
+
+
+				body{
+					background-color: rgb(220 223 220);
+				}
+
+
+
+
+				main{
+					padding-bottom: 20px;
+				}
+
+				
+
+
+				.login_facebook{
+					font-size: 1.6rem;
+					padding-bottom: 10px;
+					text-align: center;
+				}
+
+				form{
+					background-color: white;
+					padding: 20px 0 20px 0;
+					width: 90%;
+					margin: auto;
+					margin-top: 40px;
+					border-radius: 8px;
+				}
+
+
+				input{
+					background-color: rgb(243 245 243);
+					display: block;
+					padding-left: 10px;
+					width: calc(90% - 10px);
+					height: 30px;
+					margin: auto;
+					border: 1px solid rgb(210, 210, 210);
+					font-size: 1.4rem;
+				}
+
+				input:focus{
+					background-color: rgb(220 223 220);
+				}
+
+				.gmail_error{
+					font-size: 1.1rem;
+					color: red;
+					width: calc(90% - 10px);
+					margin: auto;
+				}
+
+				.fullName, .password, .rePassword{
+					margin-top: 15px;
+				}
+
+
+				button{
+					display: block;
+					border-radius: 5px;
+					width: calc(86% + 10px + 2px);
+					margin: auto;
+					margin-top: 20px;
+					padding: 10px 0;
+					font-size: 1.4rem;
+					border: none;
+					color: white;
+					background-color: rgb(50, 100, 200);
+				}
+
+
+
+				.no_account{
+					font-size: 1.3rem;
+					text-align: center;
+					margin-top: 40px;
+				}
+
+
+				.register{
+					background-color: rgb(160, 20, 0);
+					width: 60%;
+					margin-top: 10px;
+				}
+
+
+			}
+
+
+
+
+
+
+
+
+			@media screen and (min-width: 250px){
+
+				html{
+					font-size: 9px;
+				}
+
+
+
+
+
+				input{
+					height: 35px;
+				}
+
+
+				button{
+					padding: 11px 0;
+				}
+
+			}
+
+
+
+
+
+			@media screen and (min-width: 300px){
+
+				html{
+					font-size: 10px;
+				}
+
+
+
+
+
+				input{
+					height: 38px;
+				}
+
+
+				button{
+					padding: 12px 0;
+				}
+			}
+
+
+
+
+
+
+
+			@media screen and (min-width: 350px){
+
+				html{
+					font-size: 11px;
+				}
+
+
+
+
+				.login_facebook{
+					font-size: 2rem;
+					font-weight: 600;
+					padding: 10px 0 20px 0;
+					color: rgb(50, 50, 50);
+				}
+
+
+
+
+				input{
+					height: 45px;
+				}
+
+
+				button{
+					padding: 13px 0;
+				}
+
+
+			}
+
+
+
+
+
+
+
+
+
+			@media screen and (min-width: 500px){
+				main{
+					max-width: 500px;
+					margin: auto;
+					margin-top: 30px;
+				}
+
+
+
+				form{
+					width: 85%;
+					box-shadow: 0 0 7px  0 rgb(170, 170, 170);
+					margin-top: 10px;
+				}
+
+			}
+
+
+			
+
+		</style>
+	</head>
+
+
+
+
+
+
+
+	<body>
+
+		
+
+		<main role="main">
+
+			<form>
+				<p class="login_facebook">Login to Alt Data</p>
+				<input required class="email" type="text" name="email" placeholder="Phone Number">
+				<div class="email_error"></div>
+				<input required class="password" type="password" name="password" placeholder="Enter Password">
                 
-                name="password" id="pwd" 
-                autocomplete="disable" 
-                required>
-                <div class="pwd-err"></div>
-            </div>                
-                <input type="submit" value="login" class="inp" id="reg" >
-                <div class='redir'>do not have an Account? <a href="/signup">signup</a></div>
-        </form>
-    </div>
+
+				<button class="signUpButton">Login</button>
+			</form>
+
+			<p class="no_account">Don't have account?</p>
+			<button onclick="window.location.href='/signup'" class="register">Register</button>
+
+		</main>
     
 
     <script>
         const form = document.querySelector('form');
-        const emailErr = document.querySelector('.email-err')
-        const pwdErr = document.querySelector('.pwd-err')
+        const emailErr = document.querySelector('.email_error')
+        
 
         form.addEventListener('submit', async (e)=>{
             e.preventDefault();
 
             // reset errors
             emailErr.textContent = '';
-            pwdErr.textContent = '';
+           
 
             //get the values
             let email = form.email.value.slice(-10)
@@ -145,9 +316,7 @@
                     emailErr.textContent = data.errors.email;
                 }
 
-                if(data.errors.password){
-                    pwdErr.textContent = data.errors.password;
-                }
+               
                 
 
             } catch(err){
