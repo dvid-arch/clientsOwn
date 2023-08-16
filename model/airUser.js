@@ -13,6 +13,9 @@ const userSchema = new mongoose.Schema({
         unique:true,
         lowercase:true,
     },
+    pwd:{
+        type: String,
+    },
     password:{
         type: String,
         required:[true, 'Please enter a valid password'],

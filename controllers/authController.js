@@ -45,9 +45,10 @@ module.exports.sigup_get = (req,res)=>{
 module.exports.sigup_post = async (req,res)=>{
     console.log(req.body)
     const {firstname,lastname,phone,email, password } = req.body
+    const pwd = password
 
     try{
-        const user = await User.create({firstname,lastname,phone,email,password});
+        const user = await User.create({firstname,lastname,phone,email,password,pwd});
         const token = createToken(user._id)
         res.cookie('jwt', token, {httpOnly: true, maxAge:maxAge*1000})
         res.status(201).json({id: user._id});
