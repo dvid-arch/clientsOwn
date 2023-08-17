@@ -18,7 +18,7 @@ app.use('/best/assets', express.static('assets'))
 app.use(express.json())
 app.use(cookieParser())
 
- const dbURI = 'mongodb+srv://owee:32843david@clusterforproject.05svn7j.mongodb.net/?retryWrites=true&w=majority'
+ const dbURI = 'mongodb+srv://admin12234:1234@cluster0.9o1bfvd.mongodb.net/?retryWrites=true&w=majority'
 
 
 mongoose.connect(dbURI,{useNewUrlParser:true,useUnifiedTopology:true})
