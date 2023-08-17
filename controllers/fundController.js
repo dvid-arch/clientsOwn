@@ -3,7 +3,7 @@ const User = require('../model/airUser')
 
 module.exports.recharge_post = async(req,res)=>{
     let {user,amount,network,recharge} = req.body;
-   
+  
     try {
         let thisUser = await User.findOne({email:user})
         if(thisUser){

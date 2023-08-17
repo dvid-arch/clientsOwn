@@ -82,6 +82,10 @@
           }),
           headers: { "Content-Type": "application/json" },
         });
+
+        if(res){
+          alert('sucessfull')
+        }
         } catch (error) {
             alert('there was an error, try again')
             console.log(error)
@@ -90,6 +94,8 @@
         user.value = "";
         amount.value = "";
       });
+
+      
     </script>
   </body>
 </html>

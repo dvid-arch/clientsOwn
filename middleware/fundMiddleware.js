@@ -3,6 +3,7 @@ const User = require('../model/airUser')
 const approveFund = async (req, res) => {
     const { id, amount } = req.body;
     //on click approved do this
+    console.log(id,amount)
     try {
         let thisUser = await User.findById(id)
 
@@ -12,6 +13,23 @@ const approveFund = async (req, res) => {
         
          res.sendStatus(200)
     } catch (error) {
+        res.sendStatus(500)
+    }
+}
+const rejectFund = async (req, res) => {
+    const { id } = req.body;
+    //on click approved do this
+    
+    try {
+        let thisUser = await User.findById(id)
+
+        thisUser.recharge = thisUser.recharge.filter((n, index) => index != 0)
+       
+        await thisUser.save();
+        
+         res.sendStatus(200)
+    } catch (error) {
+        console.log(error.message)
         res.sendStatus(500)
     }
 }
@@ -48,6 +66,6 @@ const transAvailable = async (req, res, next) => {
     next();
 }
 
-module.exports = { approveFund, rechAvailable, approveTrans, transAvailable }
+module.exports = { approveFund, rechAvailable, approveTrans, transAvailable,rejectFund }
 
 // db.users.find({ "referred_people": { $size: { $gte: 1 } } })
