@@ -12,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" type="text/css" href="../assets/style.css">
-    <link rel="stylesheet" type="text/css" href="cpurchase.css">
+    <link rel="stylesheet" type="text/css" href="../assets/purchase.css">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -170,7 +170,6 @@
 			color: #7f00ff;
 			font-size: 4rem;
 		}
-
        
     </style>
 </head>
@@ -184,7 +183,7 @@
 				</li>
                 <li><a href=`<%- admin.walink %>`>Contact</a>
 				</li>
-			<li><a href="/best/purchase/data">Buy Data</a></li>
+			<li><a href="/best/purchase/air">Buy Airtime</a></li>
 			<li><a href="/best/partnership">Resell Data</a></li>
             <li><a href="/tos">Terms of Service</a></li>
 		</ul>
@@ -243,35 +242,34 @@
                         <input class="number" type="number" name="number" placeholder="Enter Phone Number">
                     </form>
                     <br><br>
-                    <p class="courage">Purchase up to ₦1,000 of data to receive the 11GB bonus. <br>The 11GB bonus is
+                    <p class="courage">Purchase up to ₦1,000 of data to receive the 7GB bonus. <br>The 7GB bonus is
                         available only for new users.</p>
-
 
                     <div class="bundle_wrapper">
 
-						<div class="prices price_200">
-							<em class="no_bonus bonus">- no bonus</em>
-							<span>₦<span class="val">200</span></span>
-						</div>
-						
-						
-						<div class="prices price_500">
-							<em class="second bonus">+₦600 bonus</em>
-							<span>₦<span class="val">500</span></span>
-						</div>
-					
+
+                        <div class="prices price_500">
+                            <em class="no_bonus bonus">- no bonus</em>
+                            <span> <span >5GB</span> <br> 18 Days</span>
+                            <span><br> ₦<span class="val">500</span></span>
+                        </div>
 
 
-						<div class="prices price_1000">
-							<em class="third bonus">+₦600 bonus</em>
-							<span>₦<span class="val">1000</span></span>
-						</div>
+
+                        <div class="prices price_1000">
+                            <em> +<span class="bonus">7GB</span> bonus</em>
+                            <span> <span >10GB</span> <br> 1 month</span>
+                            <span><br>₦<span class="val">1000</span></span>
+                        </div>
 
 
-						
+                        <div class="prices price_2000">
+                            <em> +<span class="bonus">12GB</span> bonus</em>
+                            <span> <span>20GB</span> <br> 2 months</span>
+                            <span><br>₦<span class="val">2000</span></span>
+                        </div>
 
-
-					</div>
+                    </div>
 
 
                     <section class="fund none">
@@ -283,6 +281,10 @@
 
                     <p class="term_apply">Terms and Condition Apply</p>
 
+                    <div class="term_home">
+                        <a href="/term">Terms of Service</a>
+                        <a href="/purchase">Home</a>
+                    </div>
 
                     <br><br><br><br>
 
@@ -303,7 +305,7 @@
                 </div>
 
                 <div>
-                    <span class="name">Airtime Bundle:</span>
+                    <span class="name">Data Plan:</span>
                     <span class="value amt"></span>
                 </div>
                 <div>
@@ -321,15 +323,15 @@
 
                 <div>
                     <span class="name">Status:</span>
-                    <% if(user.refered>= 9) { %>
+                    <% if(user.refered>= 7) { %>
                         <span class="value">success</span>
                         <% } %>
-                            <% if(user.refered < 9) { %>
+                            <% if(user.refered < 7) { %>
                                 <span class="value" style="color:#c772036a">pending...</span>
                                 <% } %>
                 </div>
-                <% if(user.refered < 9) { %>
-                    <p class="p-normal">you are required to have atleast refered 9 people before being able to make
+                <% if(user.refered < 7) { %>
+                    <p class="p-normal">you are required to have atleast refered 7 people before being able to make
                         a successful purchase and access our bonus read our terms of services to know more</p>
                     <% } %>
                         <div class="flex-op">
@@ -429,8 +431,6 @@
             })
         }
 
-
-
         document.querySelector('.navMenu').addEventListener('click',()=>{
     document.querySelector('.nav').classList.add('active')
     document.querySelector('.overla').classList.add('active')
@@ -445,6 +445,7 @@ document.querySelector('.overla').addEventListener('click',()=>{
     document.querySelector('.nav').classList.remove('active')
     document.querySelector('.overla').classList.remove('active')
 })
+
 
 
     </script>

@@ -1,8 +1,10 @@
 
 const User = require('../model/airUser')
+
 const pageSize = 20
 
-module.exports.get_atm_details = async(req,res)=>{
+//returns details from a certain page size
+module.exports.get_user_details = async(req,res)=>{
     let {page} = req.body;
     
    
@@ -15,20 +17,5 @@ module.exports.get_atm_details = async(req,res)=>{
         console.log(error.message)
         res.status(500).json({message:error.message})
     } 
-    
-}
-module.exports.getUserDet = async(req,res)=>{
-    let {lastid} = req.body;
-   
-    try {
-        let thisUser = await User.find();
-      
-        console.log(thisUser)
-        res.sendStatus(200)
-    } catch (error) {
-        res.status(500).json({message:error.message})
-    } finally{
-        thisUser.close()
-    }
     
 }

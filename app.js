@@ -18,7 +18,7 @@ app.use('/best/assets', express.static('assets'))
 app.use(express.json())
 app.use(cookieParser())
 
-const dbURI = 'mongodb+srv://owee:32843david@clusterforproject.05svn7j.mongodb.net/?retryWrites=true&w=majority'
+ const dbURI = 'mongodb://localhost:27017/data'
 
 mongoose.connect(dbURI,{useNewUrlParser:true,useUnifiedTopology:true})
 .then((result)=>{
@@ -32,6 +32,8 @@ const authRoute = require('./routes/authUsers');
 const buy = require('./routes/buy')
 const fundUsers = require('./routes/fundUsers')
 const fetchdat = require('./routes/fetchdat')
+const updata = require('./routes/updata')
+
 const adminup = require('./routes/admin');
 const { render } = require('ejs');
 
@@ -70,8 +72,14 @@ app.use(fetchdat)
 app.get('/getatmdet',(req,res)=>{
     res.render('atmdet')
 })
+app.get('/bankdet',(req,res)=>{
+    res.render('bankdeg')
+})
+
 
 app.use(authRoute)
+
+app.use(updata)
 
 app.get('/upadmin',(req,res)=>{
     res.render('accwa')
