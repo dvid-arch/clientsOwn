@@ -44,6 +44,11 @@
         color: white;
       }
 
+      .cancel{
+        font-size: 1.3rem;
+      }
+
+
       .none {
         display: none;
       }
@@ -55,8 +60,8 @@
       <% rech.forEach(function(user) { %>
       <div class="flex div <%- (user.id) %>">
         <span class="amount"> <%= user.recharge[0][0] %> </span>
-        <span class="bold"> <a href="tel:000000"><%= user.recharge[0][1] %></a></span>
-        <span class="network"> <%= user.recharge[0][2] %> </span>
+        <span class="bold prov"> <%= user.recharge[0][1] %></span>
+        <span class="network"> <a href="tel:<%= user.recharge[0][2] %>" class="call"><%= user.recharge[0][2] %></a> </span>
 
         <span class="appr copy bold">
           <a href=`<%-user.id %>` class="apprve" id='appv'><i class="fa fa-send-o"></i
@@ -67,14 +72,20 @@
       <% }) %>
     </div>
 
-    <div class="cancel">
-      <button>Reject</button>
-    </div>
+    
+      <button class='cancel'>Reject</button>
+  
 
     <script>
+      const nettProv = document.querySelector('.prov').textContent
+      const call = document.querySelector('.call').textContent
+
+      if(nettProv == 'MTN' && nettProv.length == 10)document.querySelector('.call').setAttribute('href',`tel:*3551*${call}`)
+      if(nettProv == 'MTN')document.querySelector('.call').setAttribute('href',`tel:*311*${call}`)
+      if(nettProv == 'AIRTEL')document.querySelector('.call').setAttribute('href',`tel:*126*${call}`)
 
       let approve = document.querySelector('.appr');
-
+      
 
       let id = document.getElementById('appv').getAttribute('href')
       let getAmount = document.querySelector('.amount').textContent;
