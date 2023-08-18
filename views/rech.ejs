@@ -57,7 +57,7 @@
 
   <body>
     <div class="contain">
-      <% [rech[0]].forEach(function(user) { %>
+      <% rech.forEach(function(user) { %>
       <div class="flex div <%- (user.id) %>">
         <span class="amount"> <%= user.recharge[0][0] %> </span>
         <span class="bold prov"><%= user.recharge[0][1] %></span>
