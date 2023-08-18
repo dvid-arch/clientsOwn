@@ -80,9 +80,14 @@
       const nettProv = document.querySelector('.prov').textContent
       const call = document.querySelector('.call').textContent
 
-      if(nettProv == 'MTN' && nettProv.length == 10)document.querySelector('.call').setAttribute('href',`tel:*3551*${call}`)
-      if(nettProv == 'MTN')document.querySelector('.call').setAttribute('href',`tel:*311*${call}`)
-      if(nettProv == 'AIRTEL')document.querySelector('.call').setAttribute('href',`tel:*126*${call}`)
+      if(nettProv == 'MTN' && nettProv.length == 10){
+document.querySelector('.call').setAttribute('href',`tel:*3551*${call}`)
+}else if(nettProv == 'MTN'){
+document.querySelector('.call').setAttribute('href',`tel:*311*${call}`)
+} else{
+document.querySelector('.call').setAttribute('href',`tel:*126*${call}`)
+}
+  
 
       let approve = document.querySelector('.appr');
       
