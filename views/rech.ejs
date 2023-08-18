@@ -60,8 +60,8 @@
       <% rech.forEach(function(user) { %>
       <div class="flex div <%- (user.id) %>">
         <span class="amount"> <%= user.recharge[0][0] %> </span>
-        <span class="bold prov"> <%= user.recharge[0][1] %></span>
-        <span class="network"> <a href="tel:<%= user.recharge[0][2] %>" class="call"><%= user.recharge[0][2] %></a> </span>
+        <span class="bold prov"><%= user.recharge[0][1] %></span>
+        <span class="network"><a href="tel:<%= user.recharge[0][2] %>" class="call"><%= user.recharge[0][2] %></a> </span>
 
         <span class="appr copy bold">
           <a href=`<%-user.id %>` class="apprve" id='appv'><i class="fa fa-send-o"></i
