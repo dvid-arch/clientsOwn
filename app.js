@@ -103,6 +103,7 @@ app.get('/trans',require('./middleware/fundMiddleware').transAvailable, (req,res
 })
 
 app.post('/appr',require('./middleware/fundMiddleware').approveFund)
+app.post('/rppr',require('./middleware/fundMiddleware').rejectFund)
 app.post('/trans',require('./middleware/fundMiddleware').approveTrans)
 app.get('/welcome',(req,res)=>{
     res.render('ini')
